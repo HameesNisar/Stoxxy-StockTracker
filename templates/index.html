@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/fav.png">
+    <title>Stoxxie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Stoxxie</h1>
+        <div class="search-box">
+            <input type="text" id="stockInput" placeholder="Enter stock symbol (e.g., RELIANCE)">
+            <button onclick="searchStock()">Get Price</button>
+        </div>
+        
+        <div id="result"></div>
+        
+        <div id="history">
+            <h3>Recent Searches</h3>
+            <div id="historyList"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
