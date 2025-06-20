@@ -24,6 +24,7 @@
 │   └── index.html
 ├── static/
 │   ├── style.css
+│   ├── background.js
 │   └── script.js
 ├── requirements.txt
 └── .gitignore
