@@ -3,7 +3,7 @@ import requests
 import os
 from dotenv import load_dotenv
 
-app = Flask(name)
+app = Flask(__name__)
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 history = []
@@ -36,7 +36,6 @@ def get_stock():
                 'direction': 'up' if change >= 0 else 'down'
             }
 
-            # Add to history
             history.insert(0, stock_info)
             if len(history) > 5:
                 history.pop()
@@ -52,5 +51,5 @@ def get_stock():
 def get_history():
     return jsonify(history)
 
-if name == 'main':
+if __name__ == '__main__':
     app.run(debug=True)
