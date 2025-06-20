@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="squares-background">
+        <canvas id="squaresCanvas" class="squares-canvas"></canvas>
+    </div>
+    
     <div class="container">
         <h1>📊 Stoxxie</h1>
         <div class="search-box">
@@ -23,6 +27,7 @@
         </div>
     </div>
     
+    <script src="{{ url_for('static', filename='squares.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
