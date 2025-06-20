@@ -1,52 +1,140 @@
-<h1 align="center">📈 Stoxxy - Indian Stock Tracker</h1>
+# 📈 Stoxxy - Indian Stock Tracker
 
 <p align="center">
-  <em>A sleek, minimal stock price viewer for the Indian stock market — built with Flask, HTML, CSS, and JavaScript using the Alpha Vantage API.</em>
+  <em>A sleek, minimal stock price viewer for the Indian stock market — built with Flask, HTML, CSS, and JavaScript using NSE and Yahoo Finance APIs.</em><br>
+  <a href="bit.ly//stoxiee">🌐 Live Demo</a>
 </p>
 
-<hr>
+---
 
-<h2>🚀 About the Project</h2>
-<p><strong>Stoxxy</strong> is a beginner-friendly web app that shows live stock prices of Indian stocks (e.g., <code>TCS.BSE</code>) with a recent history of searches. Built using <strong>Flask</strong> and <strong>Alpha Vantage API</strong>.</p>
+## 🚀 About the Project
 
-<h2>🛠️ Features</h2>
-<ul>
-  <li>🔍 Real-time stock price lookup</li>
-  <li>📊 Displays last searched stocks</li>
-  <li>⚡ Minimalist UI with live updates</li>
-  <li>🔐 API key stored securely via <code>.env</code></li>
-</ul>
+**Stoxxy** is a beginner-friendly web app that shows live stock prices of Indian companies (e.g., `TCS`, `RELIANCE`, `INFY`).  
+Built using **Flask**, it first tries to fetch data from the **official NSE API**, and falls back to **Yahoo Finance** if needed.
 
-<h2>📂 Project Structure</h2>
-<pre><code>Stoxxy-Stock-Tracker/
-├── app.py
+### ✨ Key Highlights
+
+- 🎯 **No API Key Required** – Uses free public APIs  
+- 🔄 **Smart Fallback System** – NSE → Yahoo Finance → BSE  
+- 📱 **Mobile Responsive** – Works on all devices  
+- ⚡ **Fast & Lightweight** – Minimal dependencies  
+
+---
+
+## 🛠️ Features
+
+- 🔍 Real-time stock price lookup using NSE India API  
+- 📉 Yahoo Finance fallback for reliability  
+- 📊 Recent search history (client-side storage via `localStorage`)  
+- 🎨 Animated background with interactive squares  
+- ⚡ Minimalist, mobile-responsive UI  
+- 🔐 Secure environment variable support via `.env`  
+
+---
+
+## 📂 Project Structure
+
+```
+Stoxxy-Stock-Tracker/
+├── app.py                 # Flask backend with API endpoints
 ├── templates/
-│   └── index.html
+│   └── index.html         # Main HTML template
 ├── static/
-│   ├── style.css
-│   ├── background.js
-│   └── script.js
-├── requirements.txt
-└── .gitignore
-</code></pre>
+│   ├── style.css          # Glassmorphism UI styles
+│   ├── background.js      # Animated squares background
+│   └── script.js          # Frontend logic & API calls
+├── requirements.txt       # Python dependencies
+├── .env                   # Environment variables (optional)
+├── .gitignore             # Git ignore file
+└── README.md              # Project documentation
+```
 
-<h2>🔐 API Key Setup</h2>
-<ol>
-  <li>Get your API key from <a href="https://www.alphavantage.co/support/#api-key" target="_blank">Alpha Vantage</a></li>
-  <li>Create a file named <code>.env</code> and add:<br><code>API_KEY=your_actual_key_here</code></li>
-</ol>
+---
 
-<h2>💻 Run Locally</h2>
-<pre><code>pip install -r requirements.txt
-python app.py
-</code></pre>
+## 🚀 Quick Start
 
-<h2>📜 License</h2>
-<p>Free to use. Built for educational/demo purposes.</p>
+### Prerequisites
+- Python 3.7+
+- pip
 
-<h2>🙌 Credits</h2>
+### Installation
 
-Created with 💻 by **Hamees Nisar**.  
-Built as part of a project — showcasing practical use of real-time APIs, secure coding practices, and clean UI design with Flask.
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/Stoxxy-Stock-Tracker.git
+cd Stoxxy-Stock-Tracker
 
+# Install dependencies
+pip install -r requirements.txt
+```
 
+---
+
+## 🔧 API Configuration
+
+The app uses:
+
+- 🟢 **NSE India API** – Primary source  
+- 🟡 **Yahoo Finance API** – Backup (`.NS` suffix)  
+- 🔵 **Yahoo Finance BSE** – Backup fallback (`.BO` suffix)  
+
+---
+
+## 📈 Supported Stock Symbols
+
+Try these popular Indian stocks:
+
+- `TCS` – Tata Consultancy Services  
+- `RELIANCE` – Reliance Industries  
+- `INFY` – Infosys  
+- `HDFCBANK` – HDFC Bank  
+- `ICICIBANK` – ICICI Bank  
+- `BHARTIARTL` – Bharti Airtel  
+- `SBIN` – State Bank of India  
+
+---
+
+## 🎨 UI Features
+
+- 🧊 Glassmorphism Design – Modern frosted glass effect  
+- 🧠 Animated Background – Interactive moving squares  
+- 📱 Responsive Layout – Works on desktop and mobile  
+- 📈 Real-time Updates – Live stock price changes  
+- 🕓 Search History – Recent searches saved locally  
+
+---
+
+## 🔧 Technical Details
+
+- **Backend:** Flask (Python)  
+- **Frontend:** Vanilla JavaScript, HTML5, CSS3  
+- **APIs:** NSE India, Yahoo Finance  
+- **Styling:** Custom CSS with glassmorphism effects  
+- **Animation:** Canvas-based background animation  
+- **Storage:** `localStorage` for search history  
+
+---
+
+## 📝 License
+
+This project is open source and available under the **MIT License**.
+
+---
+
+## 🙌 Credits
+
+Created with 💻 by **Hamees Nisar**
+
+This project showcases:
+
+- Practical use of live public APIs  
+- Fallback strategies for API reliability  
+- Secure coding practices  
+- Clean UI design using Flask  
+- Modern web development techniques  
+
+---
+
+<p align="center">
+  <strong>⭐ Star this repo if you found it helpful!</strong>
+</p>
