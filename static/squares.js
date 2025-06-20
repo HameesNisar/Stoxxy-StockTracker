@@ -1,3 +1,4 @@
+// Squares Background Animation (Your original perfect animation)
 class SquaresBackground {
     constructor(canvasId, options = {}) {
         this.canvas = document.getElementById(canvasId);
