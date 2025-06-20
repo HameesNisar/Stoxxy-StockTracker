@@ -2,7 +2,7 @@
 
 <p align="center">
   <em>A sleek, minimal stock price viewer for the Indian stock market — built with Flask, HTML, CSS, and JavaScript using NSE and Yahoo Finance APIs.</em><br>
-  <a href="bit.ly//stoxiee">🌐 Live Demo</a>
+  <a href="https://stoxxy-stocktracker.onrender.com/">🌐 Live Demo</a>
 </p>
 
 ---
