@@ -3,11 +3,9 @@ import requests
 import os
 from dotenv import load_dotenv
 
-
 app = Flask(__name__)
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
-history = []
 
 @app.route('/')
 def home():
@@ -37,11 +35,6 @@ def get_stock():
                 'direction': 'up' if change >= 0 else 'down'
             }
             
-            # Add to history
-            history.insert(0, stock_info)
-            if len(history) > 5:
-                history.pop()
-            
             return jsonify(stock_info)
         else:
             return jsonify({'error': 'Stock not found'})
@@ -49,9 +42,7 @@ def get_stock():
     except Exception as e:
         return jsonify({'error': 'API error'})
 
-@app.route('/api/history')
-def get_history():
-    return jsonify(history)
+# Remove the /api/history route since we'll handle history client-side
 
 if __name__ == '__main__':
     app.run(debug=True)
