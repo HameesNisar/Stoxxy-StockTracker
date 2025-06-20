@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/static/fav.png">
-    <title>Stoxxie</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Stoxiee - Live Stock Prices</title>
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
+    <!-- Squares Background -->
     <div class="squares-background">
         <canvas id="squaresCanvas" class="squares-canvas"></canvas>
     </div>
-    
+
     <div class="container">
-        <h1>📊 Stoxxie</h1>
-        <div class="search-box">
-            <input type="text" id="stockInput" placeholder="Enter stock symbol (e.g., RELIANCE)">
-            <button onclick="searchStock()">Get Price</button>
+        <h1>Stoxiee</h1>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="stockInput" placeholder="Enter stock symbol (e.g., RELIANCE)" maxlength="20">
+                <button onclick="searchStock()">Search</button>
+            </div>
         </div>
         
         <div id="result"></div>
@@ -26,8 +29,8 @@
             <div id="historyList"></div>
         </div>
     </div>
-    
-    <script src="{{ url_for('static', filename='squares.js') }}"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script src="static/background.js"></script>
+    <script src="static/script.js"></script>
 </body>
 </html>
