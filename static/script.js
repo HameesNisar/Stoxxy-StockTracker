@@ -1,5 +1,16 @@
-// Client-side history management
-const HISTORY_KEY = 'stoxxie_history';
+// Generate unique user ID for per-user history
+function getUserId() {
+    let userId = localStorage.getItem('stoxiee_user_id');
+    if (!userId) {
+        userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('stoxiee_user_id', userId);
+    }
+    return userId;
+}
+
+// Client-side history management with user-specific storage
+const USER_ID = getUserId();
+const HISTORY_KEY = `stoxiee_history_${USER_ID}`;
 const MAX_HISTORY = 5;
 
 function getHistory() {
@@ -44,7 +55,7 @@ function updateHistoryDisplay() {
     historyList.innerHTML = '';
     
     if (history.length === 0) {
-        historyList.innerHTML = '<p style="text-align: center; color: #6c757d;">No searches yet</p>';
+        historyList.innerHTML = '<div class="no-history">No searches yet</div>';
         return;
     }
     
@@ -80,16 +91,21 @@ function searchStock() {
         return;
     }
     
-    showResult('Loading...', 'loading');
+    showResult('<div class="loading-spinner"></div>Searching...', 'loading');
     
     fetch(`/api/stock?symbol=${symbol}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.error) {
                 showResult(data.error, 'error');
             } else {
                 const changeText = data.change >= 0 ? `+₹${data.change}` : `-₹${Math.abs(data.change)}`;
-                const arrow = data.direction === 'up' ? '↗️' : '↘️';
+                const arrow = data.direction === 'up' ? '📈' : '📉';
                 showResult(`${data.symbol}: ₹${data.price} ${arrow} ${changeText}`, 'success');
                 
                 // Add to history
@@ -97,17 +113,18 @@ function searchStock() {
             }
         })
         .catch(error => {
-            showResult('Failed to fetch stock data', 'error');
+            console.error('Fetch error:', error);
+            showResult('Failed to fetch stock data. Please check your connection and try again.', 'error');
         });
 }
 
 function showResult(message, type) {
     const result = document.getElementById('result');
-    result.textContent = message;
+    result.innerHTML = message;
     result.className = type;
 }
 
-// Clear history function (optional)
+// Clear history function (optional - you can add a button for this)
 function clearHistory() {
     localStorage.removeItem(HISTORY_KEY);
     updateHistoryDisplay();
